@@ -7,3 +7,19 @@
 <% end %>
 
 
+<%= link_to "新增文章", new_article_path %>
+
+<table>
+  <tr>
+    <td>文章標題</td>
+    <td>編輯文章</td>
+    <td>刪除文章</td>
+  </tr>
+  <tr>
+    <% @articles.each do |article| %>
+    <td><%= link_to article.title, article_path(article) %></td>
+    <td><%= link_to "edit", edit_article_path(article) %></td>
+    <td><%= link_to "刪除", article_path(article), method: :delete, data: {confirm: "確定要刪除文章？"} %></td>
+    <% end %>
+  </tr>
+</table>

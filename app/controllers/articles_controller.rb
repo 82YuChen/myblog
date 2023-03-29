@@ -1,10 +1,11 @@
 class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   def home
+    @articles = Article.all
   end
 
   def index
-    @articles = Article.new
+    @articles = Article.all
   end
 
   def show
@@ -27,9 +28,16 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    if @article.update(params_article)
+      redirect_to root_path, notice: "文章修改完成"
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @article.destroy
+    redirect_to root_path, notice: "文章已經被刪除"
   end
 
   private

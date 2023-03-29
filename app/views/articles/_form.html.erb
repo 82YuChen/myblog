@@ -1,0 +1,17 @@
+<%= form_for @article do |form| %>
+
+  <div>
+    <%= form.label :標題 %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :文章內容 %>
+    <%= form.text_area :content %>
+  </div>
+
+  <%= form.submit "送出" %>
+
+<% end %>
+
+<%= link_to "回首頁", root_path %>
